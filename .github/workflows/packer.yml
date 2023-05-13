@@ -50,4 +50,5 @@ jobs:
         with:
           artifacts: "mfsbsd.img"
           bodyFile: "release.md"
+          allowUpdates: true
           tag: latest
