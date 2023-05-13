@@ -38,4 +38,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           files: |
-            out/mfsbsd.img
+            mfsbsd.img

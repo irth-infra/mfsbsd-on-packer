@@ -6,7 +6,6 @@ env
 RELEASE=13.2-RELEASE
 ARCH=amd64
 SOURCES_URL="$1"
-OUT="/dev/vtbd0"
 
 mkdir /w
 
@@ -25,6 +24,6 @@ fetch -o conf/authorized_keys "https://github.com/$GITHUB_USER.keys"
 )
 make BASE=/sources RELEASE="$RELEASE" PERMIT_ROOT_LOGIN=without-password ROOTHACK=1
 
-dd if="mfsbsd-$RELEASE-$ARCH.img" of="$OUT"
+mv "mfsbsd-$RELEASE-$ARCH.img" /mfsbsd.img
 
 echo 'Done :3'

@@ -12,7 +12,6 @@ variable "permit_root_login" {
 source "qemu" "mfsbsd" {
   iso_url          = "https://mfsbsd.vx.sk/files/iso/13/amd64/mfsbsd-13.1-RELEASE-amd64.iso"
   iso_checksum     = "sha256:3f4fc2147ba02b40812f57cbd1c0903243524d4b9bf828761784e309f9a3c63c"
-  output_directory = "out"
   shutdown_command = "poweroff"
   disk_size        = "150M"
   memory           = 4096
@@ -20,7 +19,7 @@ source "qemu" "mfsbsd" {
   ssh_username     = "root"
   ssh_password     = "mfsroot"
   ssh_timeout      = "20m"
-  vm_name          = "mfsbsd.img"
+  vm_name          = "mfsbsd"
   net_device       = "virtio-net"
   disk_interface   = "virtio"
   boot_wait        = "10s"
@@ -47,5 +46,11 @@ build {
     environment_vars = [
       "GITHUB_USER=${var.github_user}",
     ]
+  }
+
+  provisioner "file" {
+    source      = "/mfsbsd.img"
+    destination = "./mfsbsd.img"
+    direction   = "download"
   }
 }
