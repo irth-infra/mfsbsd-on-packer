@@ -1,0 +1,3 @@
+out
+sources/*
+!sources/CACHEDIR.TAG
