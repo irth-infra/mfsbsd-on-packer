@@ -33,9 +33,19 @@ jobs:
         id: build 
         run: "packer build -var github_user=irth ."
 
+      - name: Generate md5 hash for OVH's "Bring Your Own Image"
+        id: hash
+        run: |
+          echo "image type: `raw`" > release.md
+          printf 'md5: `%s`\n' $(md5sum mfsbsd.img | awk '{print $1}') >> release.md
+
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           files: |
             mfsbsd.img
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "mfsbsd.img"
+          bodyFile: "release.md"
