@@ -28,7 +28,7 @@ jobs:
 
       - name: Run `packer build`
         id: build 
-        run: "packer build . -var github_user=irth"
+        run: "packer build -var github_user=irth ."
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
