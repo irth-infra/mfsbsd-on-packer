@@ -20,7 +20,7 @@ source "qemu" "mfsbsd" {
   ssh_username     = "root"
   ssh_password     = "mfsroot"
   ssh_timeout      = "20m"
-  vm_name          = "mfsbsd"
+  vm_name          = "mfsbsd.img"
   net_device       = "virtio-net"
   disk_interface   = "virtio"
   boot_wait        = "10s"
