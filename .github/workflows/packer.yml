@@ -36,8 +36,9 @@ jobs:
       - name: Generate md5 hash for OVH's "Bring Your Own Image"
         id: hash
         run: |
-          echo "image type: `raw`" > release.md
-          printf 'md5: `%s`\n' $(md5sum mfsbsd.img | awk '{print $1}') >> release.md
+          echo "image type: \`raw\`" > release.md
+          printf 'md5: \`%s\`\n' $(md5sum mfsbsd.img | awk '{print $1}') >> release.md
+          md5sum mfsbsd.img
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
