@@ -49,3 +49,4 @@ jobs:
         with:
           artifacts: "mfsbsd.img"
           bodyFile: "release.md"
+          tag: latest
